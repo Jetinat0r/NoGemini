@@ -1,0 +1,38 @@
+{
+	"manifest_version": 3,
+	"name": "No Gemini",
+	"description": "Removes Google Gemini's intrusive and often blatantly incorrect answers from standard search results",
+	"version": "1.0",
+	"action": 
+	{
+		"default_popup": "popup.html",
+		"default_icon": "NoGeminiIcon.png"
+	},
+	"options_ui": 
+	{
+		"page": "options/options.html",
+		"open_in_tab": false
+	},
+	"permissions":
+	[
+		"storage",
+		"declarativeNetRequest"
+	],
+	"host_permissions":
+	[
+    	"*://*.google.com/search"
+  	],
+  	"declarative_net_request":
+  	{
+  		"rule_resources":
+  		[
+  			{
+				"id": "geminiKillerRuleset",
+				"priority": 1,
+				"enabled": true,
+				"path": "netRequestRules/geminiKiller.json"
+			}
+  		]
+  	}
+}
+
