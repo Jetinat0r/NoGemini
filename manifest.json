@@ -29,10 +29,17 @@
   			{
 				"id": "geminiKillerRuleset",
 				"priority": 1,
-				"enabled": true,
+				"enabled": false,
 				"path": "netRequestRules/geminiKiller.json"
 			}
   		]
-  	}
+  	},
+  	"content_scripts":
+  	[
+  		{
+  			"matches": ["*://*.google.com/search*"],
+  			"js": ["zapGeminiBlock/zapGeminiBlock.js"]
+  		}
+  	]
 }
 
