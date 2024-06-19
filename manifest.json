@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "No Gemini",
 	"description": "Removes Google Gemini's intrusive and often blatantly incorrect answers from standard search results",
-	"version": "1.0",
+	"version": "2.0",
 	"action": 
 	{
 		"default_popup": "popup.html",
