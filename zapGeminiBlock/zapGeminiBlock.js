@@ -1,6 +1,6 @@
-const GEMINI_BLOCK = "div.ALnV7";
+const GEMINI_BLOCK = "div.KTPFee";
 const SUB_GEMINI_BLOCK = "div.s7d4ef";
-const TEST_GEMINI_BLOCK = "div.KTPFee";
+const TEST_GEMINI_BLOCK = "div.ALnV7";
 
 //Thanks to user "Yong Wang" at https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
 function WaitForElement(selector) {
@@ -24,7 +24,6 @@ function WaitForElement(selector) {
     });
 }
 
-
 function zapGemini()
 {
 	chrome.storage.sync.get(
@@ -33,22 +32,23 @@ function zapGemini()
 	    	if(settings.removeGemini)
 	    	{
 	    		//If Gemini Fails to find an answer, this will remove the "Failed" text
-	    		/*
+	    		WaitForElement(GEMINI_BLOCK).then((geminiElement) => 
+	    		{
+		    		//console.log("Wait over for element");
+		    		//console.log(geminiElement);
+					
+					//geminiElement.parentElement.removeChild(subGeminiElement);
+					geminiElement.replaceChildren([]);
+	    		});
+
+				/*
+	    		//If Gemini finds an answer, the previous block will leave a chunk of empty space, which this gets rid of
 	    		WaitForElement(SUB_GEMINI_BLOCK).then((subGeminiElement) => 
 	    		{
 		    		console.log("Wait over for element");
 		    		console.log(subGeminiElement);
 					subGeminiElement.parentElement.removeChild(subGeminiElement);
 	    		});
-
-	    		//If Gemini finds an answer, the previous block will leave a chunk of empty space, which this gets rid of
-	    		WaitForElement(GEMINI_BLOCK).then((geminiElement) => 
-	    		{
-		    		console.log("Wait over for element");
-		    		console.log(geminiElement);
-					geminiElement.parentElement.removeChild(geminiElement);
-	    		});
-				*/
 
 	    		WaitForElement(TEST_GEMINI_BLOCK).then((testGeminiElement) => 
 	    		{
@@ -57,6 +57,7 @@ function zapGemini()
 					//testGeminiElement.parentElement.removeChild(testGeminiElement);
 					testGeminiElement.replaceChildren([]);
 	    		});
+	    		*/
 	    	}
 	    }
   	)
