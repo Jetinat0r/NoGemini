@@ -1,19 +1,19 @@
 function TryChangeRuleset()
 {
   chrome.storage.sync.get(
-      { removeGemini: true, forceWebMode: false },
+      { removeAiOverview: true, forceWebMode: false },
       (settings) => 
       {
         var enable = [];
         var disable = [];
 
-        if(settings.forceWebMode && settings.removeGemini)
+        if(settings.forceWebMode && settings.removeAiOverview)
         {
-          enable.push("geminiKillerRuleset");
+          enable.push("aiOverviewKillerRuleset");
         }
         else
         {
-          disable.push("geminiKillerRuleset");
+          disable.push("aiOverviewKillerRuleset");
         }
 
         chrome.declarativeNetRequest.updateEnabledRulesets({disableRulesetIds:disable, enableRulesetIds:enable});
@@ -23,8 +23,8 @@ function TryChangeRuleset()
 
 // Saves options to chrome.storage
 const saveOptions = () => {
-  const removeGemini = document.getElementById('removeGemini').checked;
-  chrome.storage.sync.set({ removeGemini: removeGemini });
+  const removeAiOverview = document.getElementById('removeAiOverview').checked;
+  chrome.storage.sync.set({ removeAiOverview: removeAiOverview });
 
   //We may need to update the Force Web Mode rules
   TryChangeRuleset();
@@ -34,13 +34,13 @@ const saveOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { removeGemini: true, forceWebMode: false },
+    { removeAiOverview: true, forceWebMode: false },
     (settings) => {
-      document.getElementById('removeGemini').checked = settings.removeGemini;
+      document.getElementById('removeAiOverview').checked = settings.removeAiOverview;
     }
   );
 };
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById('removeGemini').addEventListener('click', saveOptions);
+document.getElementById('removeAiOverview').addEventListener('click', saveOptions);
 document.getElementById('options').addEventListener('click', () => chrome.runtime.openOptionsPage());

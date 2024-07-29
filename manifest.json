@@ -1,12 +1,12 @@
 {
 	"manifest_version": 3,
-	"name": "No Gemini",
-	"description": "Removes Google Gemini's intrusive and often blatantly incorrect answers from standard search results",
-	"version": "2.0",
+	"name": "No AI Overview Block Thingy",
+	"description": "Removes the intrusive and often blatantly incorrect \"AI\" Overview from standard searches.",
+	"version": "2.2",
 	"action": 
 	{
 		"default_popup": "popup.html",
-		"default_icon": "NoGeminiIcon.png"
+		"default_icon": "NoAiOverviewIcon.png"
 	},
 	"options_ui": 
 	{
@@ -27,10 +27,10 @@
   		"rule_resources":
   		[
   			{
-				"id": "geminiKillerRuleset",
+				"id": "aiOverviewKillerRuleset",
 				"priority": 1,
 				"enabled": false,
-				"path": "netRequestRules/geminiKiller.json"
+				"path": "netRequestRules/aiOverviewKiller.json"
 			}
   		]
   	},
@@ -38,7 +38,7 @@
   	[
   		{
   			"matches": ["*://*.google.com/search*"],
-  			"js": ["zapGeminiBlock/zapGeminiBlock.js"]
+  			"js": ["zapAiOverviewBlock/zapAiOverviewBlock.js"]
   		}
   	]
 }

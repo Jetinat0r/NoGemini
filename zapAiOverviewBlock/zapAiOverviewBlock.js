@@ -1,6 +1,6 @@
-const GEMINI_BLOCK = "div.KTPFee";
-const SUB_GEMINI_BLOCK = "div.s7d4ef";
-const TEST_GEMINI_BLOCK = "div.ALnV7";
+const AI_OVERVIEW_BLOCK = "div.KTPFee";
+const SUB_AI_OVERVIEW_BLOCK = "div.s7d4ef";
+const TEST_AI_OVERVIEW_BLOCK = "div.ALnV7";
 
 //Thanks to user "Yong Wang" at https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
 function WaitForElement(selector) {
@@ -24,38 +24,38 @@ function WaitForElement(selector) {
     });
 }
 
-function zapGemini()
+function zapAiOverview()
 {
 	chrome.storage.sync.get(
-	    { removeGemini: true, forceWeb: false },
+	    { removeAiOverview: true, forceWeb: false },
 	    (settings) => {
-	    	if(settings.removeGemini)
+	    	if(settings.removeAiOverview)
 	    	{
 	    		//If Gemini Fails to find an answer, this will remove the "Failed" text
-	    		WaitForElement(GEMINI_BLOCK).then((geminiElement) => 
+	    		WaitForElement(AI_OVERVIEW_BLOCK).then((aiOverviewElement) => 
 	    		{
 		    		//console.log("Wait over for element");
-		    		//console.log(geminiElement);
+		    		//console.log(aiOverviewElement);
 					
-					//geminiElement.parentElement.removeChild(subGeminiElement);
-					geminiElement.replaceChildren([]);
+					//aiOverviewElement.parentElement.removeChild(subAiOverviewElement);
+					aiOverviewElement.replaceChildren([]);
 	    		});
 
 				/*
 	    		//If Gemini finds an answer, the previous block will leave a chunk of empty space, which this gets rid of
-	    		WaitForElement(SUB_GEMINI_BLOCK).then((subGeminiElement) => 
+	    		WaitForElement(SUB_AI_OVERVIEW_BLOCK).then((subAiOverviewElement) => 
 	    		{
 		    		console.log("Wait over for element");
-		    		console.log(subGeminiElement);
-					subGeminiElement.parentElement.removeChild(subGeminiElement);
+		    		console.log(subAiOverviewElement);
+					subAiOverviewElement.parentElement.removeChild(subAiOverviewElement);
 	    		});
 
-	    		WaitForElement(TEST_GEMINI_BLOCK).then((testGeminiElement) => 
+	    		WaitForElement(TEST_AI_OVERVIEW_BLOCK).then((testAiOverviewElement) => 
 	    		{
 		    		console.log("Wait over for element");
-		    		console.log(testGeminiElement);
-					//testGeminiElement.parentElement.removeChild(testGeminiElement);
-					testGeminiElement.replaceChildren([]);
+		    		console.log(testAiOverviewElement);
+					//testAiOverviewElement.parentElement.removeChild(testAiOverviewElement);
+					testAiOverviewElement.replaceChildren([]);
 	    		});
 	    		*/
 	    	}
@@ -63,4 +63,4 @@ function zapGemini()
   	)
 };
 
-zapGemini();
+zapAiOverview();

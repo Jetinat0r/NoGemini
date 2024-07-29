@@ -1,19 +1,19 @@
 function TryChangeRuleset()
 {
   chrome.storage.sync.get(
-      { removeGemini: true, forceWebMode: false },
+      { removeAiOverview: true, forceWebMode: false },
       (settings) => 
       {
         var enable = [];
         var disable = [];
 
-        if(settings.forceWebMode && settings.removeGemini)
+        if(settings.forceWebMode && settings.removeAiOverview)
         {
-          enable.push("geminiKillerRuleset");
+          enable.push("aiOverviewKillerRuleset");
         }
         else
         {
-          disable.push("geminiKillerRuleset");
+          disable.push("aiOverviewKillerRuleset");
         }
 
         chrome.declarativeNetRequest.updateEnabledRulesets({disableRulesetIds:disable, enableRulesetIds:enable});
@@ -23,10 +23,10 @@ function TryChangeRuleset()
 
 // Saves options to chrome.storage
 const saveOptions = () => {
-  const removeGemini = document.getElementById('removeGemini').checked;
+  const removeAiOverview = document.getElementById('removeAiOverview').checked;
   const forceWebMode = document.getElementById('forceWebMode').checked;
 
-  chrome.storage.sync.set({ removeGemini: removeGemini, forceWebMode: forceWebMode });
+  chrome.storage.sync.set({ removeAiOverview: removeAiOverview, forceWebMode: forceWebMode });
 
   TryChangeRuleset();
 };
@@ -35,14 +35,14 @@ const saveOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { removeGemini: true, forceWebMode: false },
+    { removeAiOverview: true, forceWebMode: false },
     (settings) => {
-      document.getElementById('removeGemini').checked = settings.removeGemini;
+      document.getElementById('removeAiOverview').checked = settings.removeAiOverview;
       document.getElementById('forceWebMode').checked = settings.forceWebMode;
     }
   );
 };
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById('removeGemini').addEventListener('click', saveOptions);
+document.getElementById('removeAiOverview').addEventListener('click', saveOptions);
 document.getElementById('forceWebMode').addEventListener('click', saveOptions);
