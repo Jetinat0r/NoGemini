@@ -1,4 +1,4 @@
-const GEMINI_BLOCK = "div.KTPFee";
+const GEMINI_BLOCK = "h1.VW3apb"; //Target weird block that doesn't appear but says "AI Overview"
 const SUB_GEMINI_BLOCK = "div.s7d4ef";
 const TEST_GEMINI_BLOCK = "div.ALnV7";
 
@@ -38,7 +38,7 @@ function zapGemini()
 		    		//console.log(geminiElement);
 					
 					//geminiElement.parentElement.removeChild(subGeminiElement);
-					geminiElement.replaceChildren([]);
+					geminiElement.parentElement.replaceChildren([]);
 	    		});
 
 				/*
