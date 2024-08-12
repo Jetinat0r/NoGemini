@@ -1,4 +1,6 @@
-const AI_OVERVIEW_BLOCK = "div.KTPFee";
+//const AI_OVERVIEW_BLOCK = "div.kIyOC";
+//const AI_OVERVIEW_BLOCK = "div.rEow3c";
+const AI_OVERVIEW_BLOCK = "h1.VW3apb";
 const SUB_AI_OVERVIEW_BLOCK = "div.s7d4ef";
 const TEST_AI_OVERVIEW_BLOCK = "div.ALnV7";
 
@@ -38,7 +40,8 @@ function zapAiOverview()
 		    		//console.log(aiOverviewElement);
 					
 					//aiOverviewElement.parentElement.removeChild(subAiOverviewElement);
-					aiOverviewElement.replaceChildren([]);
+					//aiOverviewElement.replaceChildren([]);
+					aiOverviewElement.parentElement.replaceChildren([]);
 	    		});
 
 				/*

@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "No AI Overview Block Thingy",
 	"description": "Removes the intrusive and often blatantly incorrect \"AI\" Overview from standard searches.",
-	"version": "2.2",
+	"version": "2.201",
 	"action": 
 	{
 		"default_popup": "popup.html",
